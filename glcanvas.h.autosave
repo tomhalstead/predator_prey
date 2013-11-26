@@ -1,0 +1,28 @@
+#ifndef GLCANVAS_H
+#define GLCANVAS_H
+#include <QtGui>
+#include <QGLWidget>
+
+class GLCanvas : public QGLWidget
+{
+    Q_OBJECT
+public:
+    explicit GLCanvas(QWidget *parent = 0);
+    virtual ~GLCanvas();
+    void Start();
+    void Stop();
+private:
+    virtual void initializeGL();
+    bool running;
+    QTimer* timer;
+protected:
+    virtual void resizeEvent(QResizeEvent *event);
+    virtual void keyPressEvent(QKeyEvent *event);
+    virtual void paintGL();
+    virtual void resizeGL(int w, int h);
+signals:
+public slots:
+    virtual void updateGL();
+};
+
+#endif // GLCANVAS_H
